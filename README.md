@@ -8,9 +8,9 @@ Trying to reproduce an error I saw whilst working on some library upgrades for [
 
 You should see:
 
-Error on fetch for github:guardian/videojs-ima@0.2.1/src/video at .../jspm_packages/github/guardian/videojs-ima@0.2.1/src/video.js
+`Error on fetch for github:guardian/videojs-ima@0.2.1/src/video at .../jspm_packages/github/guardian/videojs-ima@0.2.1/src/video.js
 	Error: ENOENT, open '... /jspm_packages/github/guardian/videojs-ima@0.2.1/src/video.js'
-    at Error (native)
+    at Error (native)`
 
 I got this error updating one of our video libraries. The upgrade meant that the library has now become a umd-format module. This seems to affect the contents of the file known as the 'parentName' parameter in the es6 module loader polyfill. This parent file, eg. `...\jspm_packages/github/guardian/videojs-ima@0.2.1.js`, now contains a define which looks like the following:
 
